@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { PDFViewer } from '@react-pdf/renderer';
+import styles from './AppStyles';
+import { Heading } from './components/Heading/Heading';
+import { Wrapper } from './components/Wrapper/Wrapper';
+import { Profile } from './components/Profile/Profile';
+import { personInfo } from './data/data';
+import { WorkingExpirience } from './components/WorkingExpirience/WorlingExpirience';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PDFViewer style={styles.pdf}>
+        <Wrapper>
+          <Heading name="Michael" surname="Klishin" jobTitle="Front-end Developer" />
+          <Profile text={personInfo.profile} />
+          <WorkingExpirience text={personInfo.workHistory} />
+        </Wrapper>
+      </PDFViewer>
     </div>
   );
 }
